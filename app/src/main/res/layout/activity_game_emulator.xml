@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameEmulator">
+
+    <TextView
+        android:id="@+id/playerOneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
+        android:text="Player 1"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentPlayerOneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="107dp"
+        android:text="@string/selected_player1_string"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentPlayerTwoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/selected_player2_string"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/currentPlayerOneTextView"
+        app:layout_constraintTop_toBottomOf="@+id/currentPlayerOneTextView" />
+
+    <TextView
+        android:id="@+id/playerTwoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Player 2"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/playerOneTextView"
+        app:layout_constraintTop_toBottomOf="@+id/playerOneTextView" />
+
+    <Button
+        android:id="@+id/playerOneWinsButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:text="@string/player_one_won"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerTwoTextView" />
+
+    <Button
+        android:id="@+id/playerTwoWinsButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="@string/player_two_won"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerOneWinsButton" />
+
+    <Button
+        android:id="@+id/tieButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/tie_button"
+        app:layout_constraintEnd_toEndOf="@+id/playerTwoWinsButton"
+        app:layout_constraintStart_toStartOf="@+id/playerTwoWinsButton"
+        app:layout_constraintTop_toBottomOf="@+id/playerTwoWinsButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

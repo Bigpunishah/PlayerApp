@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Players App</string>
+    <string name="game_title">Players App</string>
+    <string name="select_player_one">Select Player 1</string>
+    <string name="select_player_two">Select Player 2</string>
+    <string name="add_player">Add Player</string>
+    <string name="new_player_name">New Player</string>
+    <string name="start_game">Start Game</string>
+    <string name="view_scoreboard">View Scoreboard</string>
+    <string name="tie_button">Its a tie!</string>
+    <string name="player_one_won">Player 1 Won</string>
+    <string name="player_two_won">Player 2 Won</string>
+    <string name="player_one_name">player 1</string>
+    <string name="player_two_name">player 2</string>
+
+    <string-array name="current_players_string_array">
+        <item>Player 1</item>
+        <item>Player 2</item>
+    </string-array>
+    <string name="selected_player1_string"></string>
+    <string name="selected_player2_string"></string>
+
+</resources>
