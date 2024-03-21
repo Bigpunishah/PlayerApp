@@ -20,10 +20,11 @@ public class SelectPlayer extends AppCompatActivity {
 
 //    private String[] currentPlayers = {"Jay", "Bob"}; for reference only
     private SharedPreferences sharedPreferences;
+    private SharedPreferences selectedPlayersPreferences;
 
 
     //****************************************************************
-    //Pickup here - need to assing the strings to the player selected in the main screen
+    //Pickup here - need to assign the strings to the player selected in the main screen
     private boolean showCurrentPlayer = false;
     private SharedPreferences currentPlayersSelected;
 
@@ -32,7 +33,10 @@ public class SelectPlayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_player);
 
-        //Get all saved information from SharedPreferences
+        //Clears the selected players back to none
+        clearPlayerSelected();
+
+        //Get all saved information from SharedPreferences player list
         sharedPreferences = getSharedPreferences("PlayerPrefs", Context.MODE_PRIVATE);
         Map<String, ?> playersInMap = sharedPreferences.getAll();
         int playerCount = playersInMap.size();
@@ -56,14 +60,45 @@ public class SelectPlayer extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Handle item click
                 String selectedItem = (String) parent.getItemAtPosition(position);
-                Toast.makeText(SelectPlayer.this, "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
+                selectPlayer(selectedItem, position);
+                Toast.makeText(SelectPlayer.this, "Selected: " + selectedItem + " Position: " + position, Toast.LENGTH_SHORT).show();
 
             }
         });
+
+
+        //Create the player selection SharedPreferences
+        //This allows the user to select a player from player list & store them into the player 1 or 2 slot SP (SharedPrefs)
+        selectedPlayersPreferences = getSharedPreferences("SelectedPlayerPrefs", Context.MODE_PRIVATE);
+
     }
 
-    // Method to add a new player
-    public void addPlayer(String playerName) {
-        //
+    // Method to select a player
+    public void selectPlayer(String playerName, int playerNumber) {
+        selectedPlayersPreferences = getSharedPreferences("SelectedPlayerPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = selectedPlayersPreferences.edit();
+
+        switch(playerNumber){
+            case 0:
+                String key = "Player" + playerNumber;
+                editor.putString(key, playerName);
+                editor.apply();
+                return;
+
+            case 1:
+                editor.putString("Player" + playerNumber, playerName);
+                editor.apply();
+                return;
+
+            default:
+                Toast.makeText(this, "Player already selected!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void clearPlayerSelected(){
+        selectedPlayersPreferences = getSharedPreferences("SelectedPlayerPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = selectedPlayersPreferences.edit();
+        editor.clear();
+        editor.apply();
     }
 }

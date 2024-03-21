@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView currentPlayer1TextView;
     private TextView currentPlayer2TextView;
 
+    private SharedPreferences selectedPlayersPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         currentPlayer1TextView = (TextView) findViewById(R.id.currentSelectedPlayer1TextView);
         currentPlayer2TextView = (TextView) findViewById(R.id.currentSelectedPlayer2TextView);
 
+        //update string names for players
+        selectedPlayersPreferences = getSharedPreferences("SelectedPlayerPrefs", Context.MODE_PRIVATE);
+        //Pick up here on updating players
+
         //Set OnClickListener for the buttons to switch screens
         String player1String = currentPlayer1TextView.getText().toString();
         String player2String = currentPlayer2TextView.getText().toString();
@@ -47,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
             startGameButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    //Update the players in positions 0 & 1
+                    player1Strings = getFromSharedPreferences(MainActivity.this,"Player" + 0);
+
                     //Start the game emulator activity
                     Intent intent = new Intent(MainActivity.this, GameEmulator.class);
                     startActivity(intent);
@@ -109,6 +118,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }//end onCreate
+
+    // Method to retrieve a value from SharedPreferences using a key
+    public static String getFromSharedPreferences(Context context, String key) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("SelectedPlayerPrefs", Context.MODE_PRIVATE);
+        // If the key doesn't exist, return null (or default value based on your requirement)
+        return sharedPreferences.getString(key, null);
+    }
 
 
 }//end MainActivity

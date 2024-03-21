@@ -12,7 +12,7 @@ import java.util.Map;
 ********************************************************************************************
 FOR REFERENCE ONLY THIS CODE IS NOT USED AT ALL BUT SHOWS SOME IMPORTANT INFORMATION
 
-SEE THE ADDPLAYER.JAVA FILE TO SEE THE SHARED PREFENCE USED
+SEE THE ADDPLAYER.JAVA FILE TO SEE THE SHARED PREFERENCE USED
 ********************************************************************************************
 ********************************************************************************************
  */
@@ -51,5 +51,13 @@ public class PlayerSharedPreferences {
         catch (Exception e){
             return 0;
         }
+    }
+
+    //Clear the SP - might be unfinished
+    public void clearSP(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply(); // or editor.commit();
+
     }
 }//end PlayerSharedPreferences
