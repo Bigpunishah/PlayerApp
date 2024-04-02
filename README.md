@@ -1,0 +1,1 @@
+This application is set out to keep track of a 2 players with set usernames to keep score (Win, Loss, Tie). 2 Players max with the opportunity to have other usersnames take the place of Player 1 & Player 2. This application will keep track of those users who have a score.
