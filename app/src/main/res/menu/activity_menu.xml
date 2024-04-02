@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 <!--Nothing in particular needs to be here.
 If you want to use the back arrow to previous screens, go to manifest!-->
+    <item
+        android:id="@+id/clearPlayersSelectedMenuButton"
+        android:title="Clear Selected Players" />
 </menu>
